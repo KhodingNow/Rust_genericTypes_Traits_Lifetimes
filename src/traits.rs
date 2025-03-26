@@ -41,6 +41,27 @@
         }
     }
 
-// Implementing a trait on a type is similar to implementing egular methods. The difference is that after the 'impl', we put the trait name we want to implement, then use the 'for' keyword, and then specify 
-// the name of the type we want to implement the trait for.
-// 
+// Implementing a trait on a type is similar to implementing regular methods. The difference is that after the 'impl', we put the trait name we want to implement, then use the 'for' keyword, and then specify 
+// the name of the type we want to implement the trait for. Within the 'impl' block
+// we put the method signatures that the trait definitions has defined.
+// Instead of a semicolon after each signature, we use curly brackets and fill in thge method body with the specific bahaviour that we want the methods of the trait to have for the particular type.
+
+// Now that the library has implemented the 'Summary' trait on 'NewsArticle' and 'Tweet', users of the crate can call the trait methods on instances of 'NewsArticle' and 'Tweet' in the same waywe call regular methods.
+// The only difference is that the user must bring the trait into scope as well as the types.
+
+//EXAMPLE:
+
+    use aggregator::{Summary, Tweet};
+
+    fn main() {
+        let tweet = Tweet {
+            username: String::from("horse_ebooks"),
+            content: String::from(
+                "of course, as you probably already know, people",
+            ),
+            reply: false,
+            retweet: false,
+        };
+
+        printlin!("1 new tweet: {}", tweet.summarize());
+    }
